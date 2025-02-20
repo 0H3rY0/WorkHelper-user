@@ -37,6 +37,7 @@ export const useAuthStore = create((set) => ({
       }
 
       set({ isAuthenticated: true });
+      await useUserStore.getState().fetchUser(decoded.id);
     } catch (error) {
       console.error("error during authorization", error);
       localStorage.removeItem("authToken");
