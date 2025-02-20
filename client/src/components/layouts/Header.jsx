@@ -2,9 +2,11 @@ import { FaRegUser } from "react-icons/fa";
 import { CgLogIn } from "react-icons/cg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useNavbarStore } from "../../store/useNavbarStore";
+import { useAuthStore } from "../../store/useAuthStore";
 
 const Header = () => {
   const { changeNavbarState } = useNavbarStore();
+  const { logout } = useAuthStore();
 
   return (
     <div className="col-span-2 bg-slate-700 px-6 py-2 text-white flex items-center sticky top-0 z-50">
@@ -21,8 +23,11 @@ const Header = () => {
           <p className="cursor-pointer hover:text-slate-400 flex items-center gap-1">
             User <FaRegUser size={20} />
           </p>
-          <p className="cursor-pointer hover:text-slate-400 flex items-center gap-1">
-            Login <CgLogIn size={26} />
+          <p
+            className="cursor-pointer hover:text-slate-400 flex items-center gap-1"
+            onClick={logout}
+          >
+            Logout <CgLogIn size={26} />
           </p>
         </div>
       </div>

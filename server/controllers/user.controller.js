@@ -48,6 +48,36 @@ const login = async (req, res) => {
   });
 };
 
+const getUser = async (req, res) => {
+  const { id } = req.params;
+
+  console.log("moje id to: ", id);
+
+  const sql = "SELECT id, imie, nazwisko, email FROM uzytkownicy WHERE id = ?";
+
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res
+        .status(500)
+        .json({ success: false, message: "Database error" });
+    }
+
+    if (!result || result.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "User found",
+      user: result[0],
+    });
+  });
+};
+
 module.exports = {
   login,
+  getUser,
 };

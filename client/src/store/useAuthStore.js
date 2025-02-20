@@ -1,13 +1,16 @@
 import { jwtDecode } from "jwt-decode";
 import { create } from "zustand";
+import { useUserStore } from "./useUserStore";
 
 export const useAuthStore = create((set) => ({
   isAuthenticated: false,
 
-  setAuthenticated: (token) => {
+  setAuthenticated: async (token) => {
     try {
       const decoded = jwtDecode(token);
       localStorage.setItem("authToken", token);
+
+      await useUserStore.getState().fetchUser(decoded.id);
       set({ isAuthenticated: true });
     } catch (error) {
       console.error("Error decoding token:", error);
@@ -39,5 +42,11 @@ export const useAuthStore = create((set) => ({
       localStorage.removeItem("authToken");
       set({ isAuthenticated: false });
     }
+  },
+
+  logout: () => {
+    localStorage.removeItem("authToken");
+    set({ isAuthenticated: false });
+    useUserStore.getState().resetUser();
   },
 }));
