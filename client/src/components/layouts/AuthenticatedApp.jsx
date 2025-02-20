@@ -1,15 +1,18 @@
-import Navbar from "./Navbar";
 import Header from "./Header";
 import MainTemplate from "../../templates/MainTemplate";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ObjectsTemplate from "../../templates/ObjectsTemplate";
+import SelectedObjectTemplate from "../../templates/SelectedObjectTemplate";
+import { Routes, Route } from "react-router-dom";
 
 const AuthenticatedApp = () => {
   return (
     <div>
       <MainTemplate>
         <Header />
-        <Navbar />
-        <Routes></Routes>
+        <Routes>
+          <Route path="/" element={<ObjectsTemplate />} />
+          <Route path="/obiekty/:id" element={<SelectedObjectTemplate />} />
+        </Routes>
       </MainTemplate>
     </div>
   );
