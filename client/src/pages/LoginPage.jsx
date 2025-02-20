@@ -53,6 +53,7 @@ const LoginPage = () => {
             id="password"
             type="password"
             name="haslo"
+            autoComplete="current-password"
             onChange={onInputChange}
           />
         </div>

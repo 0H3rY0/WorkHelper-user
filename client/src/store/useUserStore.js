@@ -12,7 +12,6 @@ export const useUserStore = create((set) => ({
     telefon: "",
     stanowisko: "",
     pomiszczenie: "",
-    dataDO: "",
   },
 
   user: {
@@ -33,7 +32,15 @@ export const useUserStore = create((set) => ({
         `${BACKEND_URL}/api/uzytkownicy/klienci/all/by/${response.data.user.id}`
       );
 
-      console.log(clientResponse);
+      set({
+        user: {
+          id: response.data.user.id,
+          imie: response.data.user.imie,
+          nazwisko: response.data.user.nazwisko,
+          email: response.data.user.email,
+          klienci: clientResponse.data.clients,
+        },
+      });
     } catch (error) {
       console.error("error during downloadin user: ", error);
     }

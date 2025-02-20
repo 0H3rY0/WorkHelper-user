@@ -1,6 +1,14 @@
+import { useEffect } from "react";
+import { useUserStore } from "../store/useUserStore";
 import ObjectsTemplate from "../templates/ObjectsTemplate";
 
 const ObjectsPage = () => {
+  const { user } = useUserStore();
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   return (
     <ObjectsTemplate>
       <div className="grid grid-cols-5 p-16 items-start">

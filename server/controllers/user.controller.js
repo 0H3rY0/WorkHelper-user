@@ -77,7 +77,42 @@ const getUser = async (req, res) => {
   });
 };
 
+const getClientsByUserId = async (req, res) => {
+  const { id } = req.params;
+
+  console.log("moje id to:", id);
+
+  const sql = `
+    SELECT klienci.id, klienci.id_user, klienci.id_grupy, klienci.id_obiektu, klienci.stanowisko 
+    FROM klienci 
+    JOIN uzytkownicy ON klienci.id_user = uzytkownicy.id 
+    WHERE uzytkownicy.id = ? AND klienci.dataDO IS NULL
+  `;
+
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res
+        .status(500)
+        .json({ success: false, message: "Database error" });
+    }
+
+    if (!result || result.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "No clients found for this user" });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Clients found",
+      clients: result,
+    });
+  });
+};
+
 module.exports = {
   login,
   getUser,
+  getClientsByUserId,
 };
