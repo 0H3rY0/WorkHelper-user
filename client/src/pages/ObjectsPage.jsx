@@ -1,23 +1,42 @@
 import { useEffect } from "react";
 import { useUserStore } from "../store/useUserStore";
 import ObjectsTemplate from "../templates/ObjectsTemplate";
+import { useNavigate } from "react-router";
 
 const ObjectsPage = () => {
   const { user } = useUserStore();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(user);
   }, [user]);
 
+  if (user.userData === undefined || user.userData?.length === 0) {
+    return (
+      <ObjectsTemplate>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl text-custom-blue font-bold">
+          Brak dostepnych obiektow
+        </div>
+      </ObjectsTemplate>
+    );
+  }
+
   return (
     <ObjectsTemplate>
-      <div className="grid grid-cols-5 p-16 items-start">
-        <div className="w-1/5 h-48 bg-red-300 flex justify-center">a</div>
-        <div className="w-1/5 h-48 bg-blue-300">b</div>
-        <div className="w-1/5 h-48 bg-green-300">c</div>
-        <div className="w-1/5 h-48 bg-yellow-200">d</div>
-        <div className="w-1/5 h-48 bg-purple-400">a</div>
-      </div>
+      <ul className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1  p-16 items-start gap-10">
+        {user.userData?.map((item, index) => (
+          <li
+            className="bg-custom-blue-light shadow-xl text-white p-6 hover:scale-115 scale-transition cursor-pointer"
+            key={index}
+            onClick={() => navigate(`/obiekty/${item.obiekt_id}`)}
+          >
+            <h2 className="mb-5">Nazwa: {item.obiekt_nazwa || "Brak nazwy"}</h2>
+            <p>Stanowisko: {item.stanowisko}</p>
+            <p>Telefon: {item.telefon || "brak podanego"}</p>
+          </li>
+        ))}
+      </ul>
     </ObjectsTemplate>
   );
 };
