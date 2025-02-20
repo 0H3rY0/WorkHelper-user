@@ -1,5 +1,11 @@
+import LoginPage from "../../pages/LoginPage";
+
 const UnauthenticatedApp = () => {
-  return <div>to jest nie uwierzytelniony urzytkownik</div>;
+  return (
+    <>
+      <LoginPage />
+    </>
+  );
 };
 
 export default UnauthenticatedApp;

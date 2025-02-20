@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const SECRET_KEY = process.env.SECRET_KEY;
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, haslo } = req.body;
 
   const sql = "SELECT * FROM uzytkownicy WHERE email = ?";
   db.query(sql, [email], async (err, data) => {
@@ -22,7 +22,7 @@ const login = async (req, res) => {
     const user = data[0];
 
     try {
-      const isPasswordValid = await bcrypt.compare(password, user.haslo);
+      const isPasswordValid = await bcrypt.compare(haslo, user.haslo);
 
       if (!isPasswordValid) {
         return res.status(401).json({ error: "Invalid password" });

@@ -4,6 +4,17 @@ import { create } from "zustand";
 export const useAuthStore = create((set) => ({
   isAuthenticated: false,
 
+  setAuthenticated: (token) => {
+    try {
+      const decoded = jwtDecode(token);
+      localStorage.setItem("authToken", token);
+      set({ isAuthenticated: true });
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      set({ isAuthenticated: false });
+    }
+  },
+
   initializeAuth: async () => {
     const token = localStorage.getItem("authToken");
     if (!token) {
