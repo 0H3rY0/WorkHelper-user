@@ -1,6 +1,4 @@
-import { useState } from "react";
-import axios from "axios";
-import { useAuthStore } from "../store/useAuthStore";
+import useLogin from "../hooks/useLogin";
 
 const LoginPage = () => {
   const InitialLoginData = {
@@ -8,36 +6,7 @@ const LoginPage = () => {
     haslo: "",
   };
 
-  const [loginData, setLoginData] = useState(InitialLoginData);
-  const [error, setError] = useState("");
-  const { setAuthenticated } = useAuthStore();
-
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
-  const onInputChange = (e) => {
-    setError("");
-    setLoginData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmitForm = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        `${BACKEND_URL}/api/uzytkownicy/login`,
-        loginData
-      );
-
-      console.log(response);
-      setAuthenticated(response.data.token);
-    } catch (error) {
-      console.log(error);
-      setError(error.response.data.error);
-    }
-  };
+  const { handleSubmitForm, onInputChange, error } = useLogin(InitialLoginData);
 
   return (
     <div className="w-full h-screen items-center justify-center flex">

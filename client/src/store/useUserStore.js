@@ -4,16 +4,6 @@ import { create } from "zustand";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const useUserStore = create((set) => ({
-  client: {
-    id: "",
-    idUzytkownika: "",
-    idGrupy: "",
-    idObiektu: "",
-    telefon: "",
-    stanowisko: "",
-    pomiszczenie: "",
-  },
-
   user: {
     id: "",
     imie: "",
