@@ -18,8 +18,12 @@ export const useUserStore = create((set) => ({
         `${BACKEND_URL}/api/uzytkownicy/get/${id}`
       );
 
-      const clientResponse = await axios.get(
-        `${BACKEND_URL}/api/uzytkownicy/klienci/all/by/${response.data.user.id}`
+      // const clientResponse = await axios.get(
+      //   `${BACKEND_URL}/api/uzytkownicy/klienci/all/by/${response.data.user.id}`
+      // );
+
+      const userDataResponse = await axios.get(
+        `${BACKEND_URL}/api/uzytkownicy/user-data/${response.data.user.id}`
       );
 
       set({
@@ -28,7 +32,7 @@ export const useUserStore = create((set) => ({
           imie: response.data.user.imie,
           nazwisko: response.data.user.nazwisko,
           email: response.data.user.email,
-          klienci: clientResponse.data.clients,
+          userData: userDataResponse.data.userData,
         },
       });
     } catch (error) {
