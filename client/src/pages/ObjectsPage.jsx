@@ -10,15 +10,11 @@ const ObjectsPage = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   console.log(user);
-  // }, [user]);
-
   const handleSelectObject = async (groupID) => {
     console.log(groupID);
     try {
       await fetchPermissions(groupID);
-      navigate(`selected/${groupID}/laptopy`);
+      navigate(`selected/`);
     } catch (error) {
       console.error("error during selecting object: ", error);
     }

@@ -16,6 +16,12 @@ const AlarmPage = () => {
 
   const { tableName } = useParams();
   const { permission } = usePermission();
+  const [tablePerrmision, setTablePerrmision] = useState({});
+
+  useEffect(() => {
+    setTablePerrmision(permission[tableName]);
+    console.log(tablePerrmision);
+  }, [permission, tableName]);
 
   const {
     objectFilters,
@@ -46,10 +52,6 @@ const AlarmPage = () => {
     getColumns();
   }, [tableName]);
 
-  useEffect(() => {
-    console.log(permission);
-  }, [permission]);
-
   const renderPageNumbers = () => {
     if (totalPages <= 1) return null;
 
@@ -73,6 +75,10 @@ const AlarmPage = () => {
 
     return pageNumbers;
   };
+
+  if (!tablePerrmision.wyswietlanie) {
+    return <p>Brak dostepu do tej strony</p>;
+  }
 
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">

@@ -28,9 +28,6 @@ export const usePermission = create((set) => ({
       );
       const data = response.data.permission[0];
 
-      console.log("to jest id: ", groupId);
-      console.log("to jest rezultat: ", data);
-
       const mapping = {
         "01": "laptopy",
         "02": "pc",

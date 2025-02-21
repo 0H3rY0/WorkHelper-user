@@ -29,7 +29,7 @@ const DevicesNavigation = () => {
         className={`${openList ? "block" : "hidden"} flex flex-col gap-1 mt-2`}
       >
         <NavLink
-          to="/selected/:id/laptopy"
+          to="/selected/laptopy"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -38,7 +38,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/selected/:id/pc"
+          to="/selected/pc"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -47,7 +47,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/selected/:id/kamery"
+          to="/selected/kamery"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -56,7 +56,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/selected/:id/routers"
+          to="/selected/routers"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -65,7 +65,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/selected/:id/nvr"
+          to="/selected/nvr"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -74,7 +74,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/selected/:id/alarmy"
+          to="/selected/alarmy"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -83,7 +83,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/selected/:id/anteny"
+          to="/selected/anteny"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -92,7 +92,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/selected/:id/oprogramowania"
+          to="/selected/oprogramowania"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -101,7 +101,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/selected/:id/pozostale"
+          to="/selected/pozostale"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
