@@ -18,7 +18,9 @@ const getColumns = (req, res) => {
 
 const getTableRecords = (req, res) => {
   const { filters } = req.body;
-  const { tableName } = req.params;
+  const { tableName, objectId } = req.params;
+
+  console.log(objectId);
 
   let sql = `SELECT * FROM ${tableName}`;
   let params = [];
@@ -35,12 +37,17 @@ const getTableRecords = (req, res) => {
       .join(" AND ");
 
     sql += ` WHERE ${conditions}`;
-
     params = Object.values(filters).map((filter) =>
       typeof filter === "object" && filter.text !== undefined
         ? `%${filter.text}%`
         : `%${filter}%`
     );
+  }
+
+  if (objectId) {
+    sql += filters && Object.keys(filters).length > 0 ? " AND" : " WHERE";
+    sql += " id_obiektu = ?";
+    params.push(objectId);
   }
 
   db.query(sql, params, (err, results) => {

@@ -37,7 +37,10 @@ const AlarmPage = () => {
     searchTableRecord,
     handleDateFilter,
     appropriateDate,
-  } = useFilters(`${BACKEND_URL}/api/${tableName}/table-records`, tableName);
+  } = useFilters(
+    `${BACKEND_URL}/api/item/table-records/${tableName}/17`,
+    tableName
+  );
 
   const [objectColumns, setObjectColumns] = useState([]);
 

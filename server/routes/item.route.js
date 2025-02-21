@@ -16,9 +16,9 @@ const router = express.Router();
 // const tableName = "alarmy";
 
 router.get("/columns/:tableName", getColumns);
-// router.post("/table-records", (req, res) =>
-//   getTableRecords({ ...req, params: { tableName } }, res)
-// );
+
+router.post("/table-records/:tableName/:objectId", getTableRecords);
+
 // router.get("/:id", (req, res) =>
 //   getRecordById({ ...req, params: { tableName, id: req.params.id } }, res)
 // );
