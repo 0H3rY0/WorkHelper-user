@@ -9,7 +9,7 @@ const useItemData = (tableName, id) => {
     const getData = async () => {
       try {
         const response = await axios.get(
-          `${BACKEND_URL}/api/${tableName}/${id}`
+          `${BACKEND_URL}/api/item/${tableName}/${id}`
         );
         setItemData(response.data[0]);
       } catch (error) {

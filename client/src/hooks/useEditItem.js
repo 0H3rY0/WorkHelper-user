@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const useEditItem = (tableName, id, itemData, setItemData) => {
+const useEditItem = (tableName, id, itemData) => {
   const [editMode, setEditMode] = useState(null);
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
