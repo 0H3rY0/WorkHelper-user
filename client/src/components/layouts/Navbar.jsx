@@ -1,6 +1,8 @@
 import DevicesNavigation from "../ui/DevicesNavigation";
 import { useNavbarStore } from "../../store/useNavbarStore";
 import RaportNavigation from "../ui/RaportNavigation";
+import { NavLink } from "react-router";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const Navbar = () => {
   const { isNavbarActive, closeNavbar } = useNavbarStore();
@@ -19,6 +21,16 @@ const Navbar = () => {
           {/* <hr className="rounded-lg border-2 border-slate-500" /> */}
           <RaportNavigation />
           <DevicesNavigation />
+          <hr className="rounded-lg border-2 border-slate-500" />
+
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+          >
+            <p className="flex items-center gap-2 cursor-pointer hover:text-slate-400">
+              <IoMdArrowRoundBack size={32} /> Twoje obiekty
+            </p>
+          </NavLink>
         </div>
       </div>
 
