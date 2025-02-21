@@ -19,6 +19,6 @@ router.post("/table-records/:tableName/:objectId", getTableRecords);
 
 router.get("/:tableName/:id", getRecordById);
 
-router.post("/edit", editItem);
+router.post("/edit/:tableName", editItem);
 
 module.exports = router;

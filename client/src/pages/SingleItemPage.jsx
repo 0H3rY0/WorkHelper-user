@@ -27,7 +27,7 @@ const SingleItemPage = () => {
         <h2 className="h2 flex items-center gap-2 text-xl md:text-2xl">
           Przegląd {tableName} <GrOverview size={32} />
         </h2>
-        <Link to={`/${tableName}`}>
+        <Link to={`/selected/${tableName}`}>
           <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
             <IoMdArrowRoundBack /> Wróć
           </button>
@@ -39,13 +39,6 @@ const SingleItemPage = () => {
         itemId={id}
         fieldConfig={fieldConfig}
       />
-
-      {/* <DeleteModal
-        text={`Czy jesteś pewny, że chcesz usunąć ten ${tableName} z datą:`}
-        date={date}
-        func={handleDeleteItem}
-        func2={setDate}
-      /> */}
     </div>
   );
 };
