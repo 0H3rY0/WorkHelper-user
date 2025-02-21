@@ -128,9 +128,15 @@ const editItem = async (req, res) => {
   }
 };
 
-const addRecord = (table, columns, values, res) => {
+const addRecord = (req, res) => {
+  const { tableName } = req.params;
+  const formData = req.body;
+
+  const columns = Object.keys(formData);
+  const values = Object.values(formData);
+
   const sql = `
-    INSERT INTO ${table} (${columns.join(", ")}) 
+    INSERT INTO ${tableName} (${columns.join(", ")}) 
     VALUES (${columns.map(() => "?").join(", ")})
   `;
 
@@ -140,7 +146,7 @@ const addRecord = (table, columns, values, res) => {
     }
 
     res.status(201).json({
-      message: `${table} added successfully`,
+      message: `${tableName} added successfully`,
       recordId: result.insertId,
     });
   });

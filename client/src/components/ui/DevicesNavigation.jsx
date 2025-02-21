@@ -14,7 +14,7 @@ import { FaBoxOpen } from "react-icons/fa";
 import { NavLink } from "react-router";
 
 const DevicesNavigation = () => {
-  const [openList, setOpenList] = useState(false);
+  const [openList, setOpenList] = useState(true);
 
   return (
     <div className="flex flex-col gap-2 ">

@@ -6,6 +6,7 @@ import Header from "../components/layouts/Header";
 
 import ItemPage from "../pages/ItemPage";
 import SingleItemPage from "../pages/SingleItemPage";
+import AddItem from "../pages/AddItem";
 
 const SelectedObjectTemplate = () => {
   return (
@@ -15,6 +16,7 @@ const SelectedObjectTemplate = () => {
       <Routes>
         <Route path=":tableName" element={<ItemPage />} />
         <Route path=":tableName/:id" element={<SingleItemPage />} />
+        <Route path="add/:tableName" element={<AddItem />} />
       </Routes>
     </MainTemplate>
   );

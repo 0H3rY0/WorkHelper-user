@@ -5,13 +5,11 @@ const {
   getColumns,
   getTableRecords,
   getRecordById,
-  deleteRecord,
   editItem,
+  addRecord,
 } = require("../controllers/item.controller");
 
 const router = express.Router();
-
-// router.post("/alarmy/add", addAlarm);
 
 router.get("/columns/:tableName", getColumns);
 
@@ -20,5 +18,11 @@ router.post("/table-records/:tableName/:objectId", getTableRecords);
 router.get("/:tableName/:id", getRecordById);
 
 router.post("/edit/:tableName", editItem);
+
+router.get("/test", (req, res) => {
+  res.send("Test working");
+});
+
+router.post("/add/:tableName", addRecord);
 
 module.exports = router;
