@@ -2,14 +2,24 @@ import { useParams, Link } from "react-router-dom";
 import { GrOverview } from "react-icons/gr";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import ItemDetails from "../components/ItemDetails";
-// import DeleteModal from "../components/modals/DeleteModal";
-// import useDeleteItem from "../hooks/useDeleteItem";
 import { getFieldConfig } from "../utils/fieldConfig";
+import { useEffect, useState } from "react";
+import { usePermission } from "../store/usePermission";
 
 const SingleItemPage = () => {
   const { tableName, id } = useParams();
-  // const { handleDeleteItem, date, setDate } = useDeleteItem(tableName, id);
   const fieldConfig = getFieldConfig(tableName);
+
+  const { permission } = usePermission();
+  const [tablePerrmision, setTablePerrmision] = useState({});
+
+  useEffect(() => {
+    setTablePerrmision(permission[tableName]);
+  }, [permission, tableName]);
+
+  if (!tablePerrmision.edytowanie) {
+    return <p>Brak dostepu do tej strony</p>;
+  }
 
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
