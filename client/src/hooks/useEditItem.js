@@ -8,7 +8,7 @@ const useEditItem = (tableName, id, itemData) => {
 
   const handleEditField = async () => {
     try {
-      await axios.post(`${BACKEND_URL}/api/${tableName}/edit`, {
+      await axios.post(`${BACKEND_URL}/api/item/${tableName}/edit`, {
         id,
         ...itemData,
       });
