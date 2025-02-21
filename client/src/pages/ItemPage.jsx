@@ -9,11 +9,13 @@ import SelectColumns from "../components/SelectColumns";
 import { ColumnsProvider } from "../context/ColumnsContext";
 import { Link, useParams } from "react-router";
 import { MdAddToPhotos } from "react-icons/md";
+import { usePermission } from "../store/usePermission";
 
 const AlarmPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const { tableName } = useParams();
+  const { permission } = usePermission();
 
   const {
     objectFilters,
@@ -43,6 +45,10 @@ const AlarmPage = () => {
 
     getColumns();
   }, [tableName]);
+
+  useEffect(() => {
+    console.log(permission);
+  }, [permission]);
 
   const renderPageNumbers = () => {
     if (totalPages <= 1) return null;

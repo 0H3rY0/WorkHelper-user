@@ -153,9 +153,39 @@ WHERE k.id_user = ?;
   });
 };
 
+const getApproprietePerrmision = async (req, res) => {
+  const { id } = req.params;
+
+  console.log("to jest id: ", id);
+
+  const sql = `SELECT * FROM grupy WHERE id = ?`;
+
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res
+        .status(500)
+        .json({ success: false, message: "Database error" });
+    }
+
+    if (!result || result.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "No data found for this user" });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "data found",
+      permission: result,
+    });
+  });
+};
+
 module.exports = {
   login,
   getUser,
   getClientsByUserId,
   getAllObjectsWithGroupsByUserId,
+  getApproprietePerrmision,
 };
