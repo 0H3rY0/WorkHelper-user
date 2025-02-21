@@ -139,7 +139,7 @@ export const fieldConfigs = {
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
     { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    // { label: "Data DO", type: "date", name: "dataDO" },
   ],
 
   anteny: [

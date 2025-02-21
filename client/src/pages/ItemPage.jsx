@@ -20,7 +20,6 @@ const AlarmPage = () => {
 
   useEffect(() => {
     setTablePerrmision(permission[tableName]);
-    console.log(tablePerrmision);
   }, [permission, tableName]);
 
   const {
@@ -38,7 +37,7 @@ const AlarmPage = () => {
     handleDateFilter,
     appropriateDate,
   } = useFilters(
-    `${BACKEND_URL}/api/item/table-records/${tableName}/17`,
+    `${BACKEND_URL}/api/item/table-records/${tableName}/${permission.objectId}`,
     tableName
   );
 

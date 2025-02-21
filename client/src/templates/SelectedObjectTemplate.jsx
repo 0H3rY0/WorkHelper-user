@@ -5,6 +5,7 @@ import MainTemplate from "./MainTemplate";
 import Header from "../components/layouts/Header";
 
 import ItemPage from "../pages/ItemPage";
+import SingleItemPage from "../pages/SingleItemPage";
 
 const SelectedObjectTemplate = () => {
   return (
@@ -13,6 +14,7 @@ const SelectedObjectTemplate = () => {
       <Navbar />
       <Routes>
         <Route path=":tableName" element={<ItemPage />} />
+        <Route path=":tableName/:id" element={<SingleItemPage />} />
       </Routes>
     </MainTemplate>
   );

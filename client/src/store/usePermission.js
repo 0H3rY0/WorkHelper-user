@@ -18,10 +18,10 @@ export const usePermission = create((set) => ({
       edytowanie: false,
     },
     pozostale: { wyswietlanie: false, dodawanie: false, edytowanie: false },
+    objectId: "",
   },
 
-  fetchPermissions: async (groupId) => {
-    console.log("wykonuje");
+  fetchPermissions: async (groupId, objectId) => {
     try {
       const response = await axios.get(
         `${BACKEND_URL}/api/uzytkownicy/permission/${groupId}`
@@ -48,6 +48,8 @@ export const usePermission = create((set) => ({
         };
         return acc;
       }, {});
+
+      parsedPermissions.objectId = objectId;
 
       set({ permission: parsedPermissions });
     } catch (error) {
