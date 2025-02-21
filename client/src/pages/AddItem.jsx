@@ -1,34 +1,50 @@
-// import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoMdAdd } from "react-icons/io";
-// import axios from "axios";
 import AddDeviceForm from "../components/AddDeviceForm";
 import useAddDeviceForm from "../hooks/useAddDeviceForm";
-// import { alarmFields } from "../utils/deviceFormFilds/alarmFields";
 import { useNavigate, useParams } from "react-router";
 import { IoMdArrowRoundBack } from "react-icons/io";
-
+import { usePermission } from "../store/usePermission";
 import { getItemAddFields } from "../utils/addFieldConfig";
 import { initialDeviceStates } from "../utils/initialStates";
 
 const AddLaptopPage = () => {
   const { tableName } = useParams();
+  const { permission } = usePermission();
+  const navigate = useNavigate();
 
   const itemFields = getItemAddFields(tableName);
   const initialState = initialDeviceStates[tableName] || {};
-
-  const navigate = useNavigate();
-
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+  const [objectId, setObjectId] = useState(null);
+
+  useEffect(() => {
+    console.log(permission);
+    if (permission.objectId) {
+      setObjectId(permission.objectId);
+    }
+  }, [permission]);
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialState,
     `${BACKEND_URL}/api/item/add/${tableName}`,
-    17
+    objectId
   );
+
+  if (!objectId) {
+    return (
+      <div className="w-full p-14 flex flex-col items-start justify-start">
+        <h2 className="text-xl md:text-2xl font-semibold">
+          Ładowanie danych...
+        </h2>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full p-14 flex flex-col items-start justify-start">
-      <div className="w-full ">
+      <div className="w-full">
         <div className="flex justify-between items-center mb-10">
           <h2 className="h2 flex items-center gap-2 text-xl md:text-2xl">
             Dodaj {tableName} <IoMdAdd size={32} />
@@ -37,7 +53,7 @@ const AddLaptopPage = () => {
             className="button bg-custom-blue hover:bg-custom-blue-light text-white flex gap-2 items-center justify-center"
             onClick={() => navigate(`/selected/${tableName}`)}
           >
-            <IoMdArrowRoundBack /> Wroc
+            <IoMdArrowRoundBack /> Wróć
           </button>
         </div>
         <AddDeviceForm
