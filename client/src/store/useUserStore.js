@@ -9,7 +9,7 @@ export const useUserStore = create((set) => ({
     imie: "",
     nazwisko: "",
     email: "",
-    klienci: [],
+    userData: [],
   },
 
   fetchUser: async (id) => {
