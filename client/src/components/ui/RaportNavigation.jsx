@@ -21,7 +21,7 @@ const DevicesNavigation = () => {
         className={`${openList ? "block" : "hidden"} flex flex-col gap-1 mt-2`}
       >
         <NavLink
-          to="/laptopy"
+          to="/selected/make-raport"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -30,7 +30,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/pc"
+          to="/selected/my-raports"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
