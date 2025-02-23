@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import RaportsList from "../components/RaportsList";
 
-const MyRaports = () => {
+const MyRaportsPage = () => {
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
       <div className="w-full flex justify-between items-center mb-14">
@@ -18,4 +18,4 @@ const MyRaports = () => {
   );
 };
 
-export default MyRaports;
+export default MyRaportsPage;
