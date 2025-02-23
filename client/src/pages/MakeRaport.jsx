@@ -11,6 +11,26 @@ const MakeRaport = () => {
           </button>
         </Link>
       </div>
+
+      <div className="w-full flex flex-col gap-8">
+        <div className="w-full flex flex-col">
+          <label htmlFor="content" className="text-2xl">
+            Tutuł
+          </label>
+          <input type="text" placeholder="Napisz tutaj swój tytuł" />
+        </div>
+
+        <div className="w-full flex flex-col">
+          <label htmlFor="content" className="text-2xl">
+            Treść zgłoszenia
+          </label>
+          <textarea
+            name="content"
+            id="content"
+            className="input min-h-32"
+          ></textarea>
+        </div>
+      </div>
     </div>
   );
 };
