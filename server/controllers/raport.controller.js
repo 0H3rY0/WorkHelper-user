@@ -4,15 +4,8 @@ require("dotenv").config();
 const DATABASE_NAME = process.env.DB_NAME;
 
 const addRaport = (req, res) => {
-  const {
-    id_klienta,
-    status,
-    tytul,
-    priorytet,
-    data,
-    godzina,
-    tresc, // Dodajemy treść wiadomości
-  } = req.body;
+  const { id_klienta, status, tytul, priorytet, data, godzina, tresc } =
+    req.body;
 
   const sqlTicket = `
       INSERT INTO ticket022025 (id_klienta, status, tytul, priorytet, data, godzina) 

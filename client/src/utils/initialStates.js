@@ -130,3 +130,34 @@ export const initialDeviceStates = {
     dataDO: null,
   },
 };
+
+export const initialRaportStates = {
+  raport: {
+    id_klienta: null,
+    status: 1,
+    tytul: "",
+    priorytet: 1,
+    data: new Date().toISOString().split("T")[0],
+    godzina: new Date().toTimeString().split(" ")[0],
+    tresc: "",
+  },
+
+  ticket: {
+    // id: null,
+    id_klienta: null,
+    status: 0,
+    tytul: "",
+    priorytet: 0,
+    data: "",
+    godzina: "",
+  },
+
+  message: {
+    // id: null,
+    id_ticket: null,
+    id_klienta: null,
+    data: "",
+    godzina: "",
+    tresc: "",
+  },
+};

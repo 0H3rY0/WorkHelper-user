@@ -1,6 +1,20 @@
 import { Link } from "react-router";
+import { initialRaportStates } from "../utils/initialStates";
+import { useState } from "react";
 
 const MakeRaport = () => {
+  const initialRaportState = initialRaportStates.raport;
+
+  const [raport, setRaport] = useState(initialRaportState);
+
+  const onInputChange = (e) => {
+    setRaport((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+
+    console.log(raport);
+  };
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
       <div className="w-full flex justify-between items-center mb-14">
@@ -17,7 +31,12 @@ const MakeRaport = () => {
           <label htmlFor="content" className="text-2xl">
             Tutuł
           </label>
-          <input type="text" placeholder="Napisz tutaj swój tytuł" />
+          <input
+            type="text"
+            name="tytul"
+            placeholder="Napisz tutaj swój tytuł"
+            onChange={onInputChange}
+          />
         </div>
 
         <div className="w-full flex flex-col">
@@ -25,9 +44,11 @@ const MakeRaport = () => {
             Treść zgłoszenia
           </label>
           <textarea
-            name="content"
+            name="tresc"
             id="content"
             className="input min-h-32"
+            placeholder="Napisz tutaj treść swojego zgłoszenia"
+            onChange={onInputChange}
           ></textarea>
         </div>
       </div>
