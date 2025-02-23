@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { usePermission } from "../store/usePermission";
-import { formatDate } from "../utils/functions/formatData";
+import Ticket from "./ui/Ticket";
 
 const RaportsList = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -63,19 +63,7 @@ const RaportsList = () => {
         </li>
 
         {tickets.map((item) => (
-          <li
-            key={item.id}
-            className="w-full bg-custom-blue-light text-white p-5 grid grid-cols-8 gap-5 hover:scale-105 scale-transition cursor-pointer text-center rounded-sm"
-          >
-            <h2 className="text-xl font-semibold col-span-2 text-start">
-              {item.tytul}
-            </h2>
-            <p className="col-span-2 text-start">{`#${item.id}/ticket012025`}</p>
-            <p className="text-center">{item.status}</p>
-            <p className="text-center">{item.priorytet}</p>
-            <p className="text-end">{formatDate(item.data)}</p>
-            <p className="text-end">{item.godzina}</p>
-          </li>
+          <Ticket key={item.id} item={item} />
         ))}
       </ul>
     </div>
