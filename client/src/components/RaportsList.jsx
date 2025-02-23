@@ -8,6 +8,7 @@ const RaportsList = () => {
 
   const { permission } = usePermission();
   const [tickets, setTickets] = useState([]);
+  const [tableName, setTableName] = useState(null);
   const [clientId, setClientId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -29,6 +30,7 @@ const RaportsList = () => {
           `${BACKEND_URL}/api/raport/ticket/all/${clientId}`
         );
         setTickets(response.data.tickets);
+        setTableName(response.data.tableName);
       } catch (err) {
         setError("Błąd podczas ładowania zgłoszeń");
         console.log("Error fetching tickets:", err);
@@ -63,7 +65,7 @@ const RaportsList = () => {
         </li>
 
         {tickets.map((item) => (
-          <Ticket key={item.id} item={item} />
+          <Ticket key={item.id} item={item} tableName={tableName} />
         ))}
       </ul>
     </div>

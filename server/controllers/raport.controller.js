@@ -52,18 +52,27 @@ const addRaport = (req, res) => {
 const getAllTicketsByClientId = (req, res) => {
   const { id } = req.params;
 
-  const sql = "SELECT * FROM ticket022025 WHERE id_klienta = ?";
+  const today = new Date();
 
-  db.query(sql, [id], (err, result) => {
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+
+  const tableName = `ticket${month}${year}`;
+
+  const sql = "SELECT * FROM ?? WHERE id_klienta = ?";
+
+  db.query(sql, [tableName, id], (err, result) => {
     if (err) {
       console.log("error in getAllTicketsByClientId");
       res.status(500).json({ success: false, message: `db error: ${err}` });
+      return;
     }
 
     res.status(200).json({
       success: true,
       message: "Downloaded all tickets by client id success!",
       tickets: result,
+      tableName: tableName,
     });
   });
 };
