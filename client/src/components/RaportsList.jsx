@@ -1,4 +1,21 @@
+import { useEffect, useState } from "react";
+import { initialRaportStates } from "../utils/initialStates";
+import axios from "axios";
+
 const RaportsList = () => {
+  const BACKEND_URL = import.meta.evn.VITE_BACKEND_URL;
+  const [tickets, setTickets] = useState(initialRaportStates.ticket);
+
+  useEffect(() => {
+    const getTickets = async () => {
+      const response = await axios.get(`${BACKEND_URL}/api/raport/ticket/all`);
+
+      console.log(response);
+    };
+
+    getTickets();
+  });
+
   const raports = [
     {
       id: "1",
