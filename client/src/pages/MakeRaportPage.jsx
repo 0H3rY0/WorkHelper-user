@@ -7,6 +7,7 @@ import FormTextarea from "../components/ui/FormTextarea";
 import BackButton from "../components/ui/BackButton";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { FaRegCalendarCheck } from "react-icons/fa";
 
 const MakeRaportPage = () => {
   const initialRaportState = initialRaportStates.raport;
@@ -51,7 +52,9 @@ const MakeRaportPage = () => {
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
       <div className="w-full flex justify-between items-center mb-14">
-        <h2 className="text-2xl font-bold text-custom-blue">Zrób zgłoszenie</h2>
+        <h2 className="text-2xl font-bold text-custom-blue flex items-center gap-2">
+          Zrób zgłoszenie <FaRegCalendarCheck size={32} />
+        </h2>
         <BackButton path="/selected" />
       </div>
 
@@ -61,12 +64,14 @@ const MakeRaportPage = () => {
           value={raport.tytul}
           placeholder="Napisz tutaj swój tytuł"
           onChange={onInputChange}
+          labelText="Tytuł"
         />
         <FormTextarea
           name="tresc"
           value={raport.tresc}
           placeholder="Napisz tutaj treść swojego zgłoszenia"
           onChange={onInputChange}
+          labelText="Treść zgłoszenia"
         />
         <div>
           <button

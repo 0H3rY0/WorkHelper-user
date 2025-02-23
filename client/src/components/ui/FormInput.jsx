@@ -1,8 +1,8 @@
-const FormInput = ({ name, value, placeholder, onChange }) => {
+const FormInput = ({ name, value, placeholder, onChange, labelText }) => {
   return (
-    <div className="w-full flex flex-col">
-      <label htmlFor={name} className="text-2xl">
-        {placeholder}
+    <div className="w-full flex flex-col gap-1">
+      <label htmlFor={name} className="text-xl font-bold">
+        {labelText}
       </label>
       <input
         type="text"

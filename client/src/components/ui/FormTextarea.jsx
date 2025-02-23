@@ -1,8 +1,8 @@
-const FormTextarea = ({ name, value, placeholder, onChange }) => {
+const FormTextarea = ({ name, value, placeholder, onChange, labelText }) => {
   return (
-    <div className="w-full flex flex-col">
-      <label htmlFor={name} className="text-2xl">
-        {placeholder}
+    <div className="w-full flex flex-col gap-1">
+      <label htmlFor={name} className="text-xl font-bold">
+        {labelText}
       </label>
       <textarea
         name={name}
