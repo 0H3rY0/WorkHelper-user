@@ -49,4 +49,23 @@ const addRaport = (req, res) => {
   });
 };
 
-module.exports = { addRaport };
+const getAllTicketsByClientId = (req, res) => {
+  const { id } = req.params;
+
+  const sql = "SELECT * FROM ticket022025 WHERE id_klienta = ?";
+
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.log("error in getAllTicketsByClientId");
+      res.status(500).json({ success: false, message: `db error: ${err}` });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Downloaded all tickets by client id success!",
+      tickets: result,
+    });
+  });
+};
+
+module.exports = { addRaport, getAllTicketsByClientId };
