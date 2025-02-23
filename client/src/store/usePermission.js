@@ -19,9 +19,10 @@ export const usePermission = create((set) => ({
     },
     pozostale: { wyswietlanie: false, dodawanie: false, edytowanie: false },
     objectId: "",
+    clientId: "",
   },
 
-  fetchPermissions: async (groupId, objectId) => {
+  fetchPermissions: async (groupId, objectId, clientId) => {
     try {
       const response = await axios.get(
         `${BACKEND_URL}/api/uzytkownicy/permission/${groupId}`
@@ -50,6 +51,7 @@ export const usePermission = create((set) => ({
       }, {});
 
       parsedPermissions.objectId = objectId;
+      parsedPermissions.clientId = clientId;
 
       set({ permission: parsedPermissions });
     } catch (error) {

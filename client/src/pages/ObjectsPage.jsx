@@ -10,9 +10,9 @@ const ObjectsPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSelectObject = async (groupID, objectID) => {
+  const handleSelectObject = async (groupID, objectID, clientID) => {
     try {
-      await fetchPermissions(groupID, objectID);
+      await fetchPermissions(groupID, objectID, clientID);
       navigate(`selected/`);
     } catch (error) {
       console.error("error during selecting object: ", error);
@@ -36,7 +36,9 @@ const ObjectsPage = () => {
           <li
             className="bg-custom-blue-light shadow-xl text-white p-6 hover:scale-115 scale-transition cursor-pointer"
             key={index}
-            onClick={() => handleSelectObject(item.grupa_id, item.obiekt_id)}
+            onClick={() =>
+              handleSelectObject(item.grupa_id, item.obiekt_id, item.klient_id)
+            }
           >
             <h2 className="mb-5">Nazwa: {item.obiekt_nazwa || "Brak nazwy"}</h2>
             <p>Stanowisko: {item.stanowisko}</p>

@@ -1,11 +1,21 @@
 import { Link } from "react-router";
 import { initialRaportStates } from "../utils/initialStates";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePermission } from "../store/usePermission";
 
 const MakeRaport = () => {
   const initialRaportState = initialRaportStates.raport;
+  const { permission } = usePermission();
 
   const [raport, setRaport] = useState(initialRaportState);
+
+  useEffect(() => {
+    console.log(permission);
+    setRaport((prev) => ({
+      ...prev,
+      id_klienta: permission.clientId,
+    }));
+  }, [permission]);
 
   const onInputChange = (e) => {
     setRaport((prev) => ({
