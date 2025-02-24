@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Message from "./ui/Message";
 
-const MessageList = () => {
+const MessageList = ({ ticketId }) => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [messages, setMessages] = useState([]);
 
@@ -9,7 +10,7 @@ const MessageList = () => {
     const getAllMessagesByTicketId = async () => {
       try {
         const response = await axios.get(
-          `${BACKEND_URL}/api/raport/all-message/ticket/3`
+          `${BACKEND_URL}/api/raport/all-message/ticket/${ticketId}`
         );
         console.log(response);
         setMessages(response.data.messages);
@@ -22,13 +23,9 @@ const MessageList = () => {
   }, []);
 
   return (
-    <ul>
+    <ul className="w-full flex flex-col gap-3 items-start">
       {messages.map((item) => (
-        <li key={item.id}>
-          <p>{item.data}</p>
-          <p>{item.godzina}</p>
-          <p>{item.tresc}</p>
-        </li>
+        <Message key={item.id} item={item} />
       ))}
     </ul>
   );

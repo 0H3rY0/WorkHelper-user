@@ -13,7 +13,7 @@ const SingleRaportPage = () => {
         </h2>
         <BackButton path="/selected/my-raports" />
       </div>
-      <MessageList />
+      <MessageList ticketId={ticketId} />
     </div>
   );
 };
