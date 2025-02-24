@@ -77,4 +77,36 @@ const getAllTicketsByClientId = (req, res) => {
   });
 };
 
-module.exports = { addRaport, getAllTicketsByClientId };
+const getAllMessageByTicketId = (req, res) => {
+  const { ticketId } = req.params;
+
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+
+  const tableName = `message${month}${year}`;
+
+  const sql = "SELECT * FROM ?? WHERE id_ticket = ?";
+
+  db.query(sql, [tableName, ticketId], (err, result) => {
+    if (err) {
+      console.log("error in getAllMessageByTicketId");
+      res.status(500).json({ success: false, message: `db error: ${err}` });
+      return;
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Downloaded all messages by ticket id success!",
+      messages: result,
+      tableName: tableName,
+    });
+  });
+};
+
+module.exports = {
+  addRaport,
+  getAllTicketsByClientId,
+  getAllMessageByTicketId,
+};
