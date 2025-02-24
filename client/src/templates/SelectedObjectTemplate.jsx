@@ -10,6 +10,7 @@ import AddItem from "../pages/AddItem";
 
 import MyRaportsPage from "../pages/MyRaportsPage";
 import MakeRaportPage from "../pages/MakeRaportPage";
+import SingleRaportPage from "../pages/SingleRaportPage";
 
 const SelectedObjectTemplate = () => {
   return (
@@ -23,6 +24,7 @@ const SelectedObjectTemplate = () => {
 
         <Route path="make-raport" element={<MakeRaportPage />} />
         <Route path="my-raports" element={<MyRaportsPage />} />
+        <Route path="my-raports/:ticketId" element={<SingleRaportPage />} />
       </Routes>
     </MainTemplate>
   );

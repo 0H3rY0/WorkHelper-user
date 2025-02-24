@@ -1,4 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import { IoClose } from "react-icons/io5";
 
 const CheckAgreementModal = ({ children, text, btnText, func }) => {
   return (
@@ -7,8 +8,11 @@ const CheckAgreementModal = ({ children, text, btnText, func }) => {
       <Dialog.Portal>
         <Dialog.Overlay className="modal-overlay">
           <Dialog.Content className="modal-content">
-            <Dialog.Title>
-              <p className="text-xl font-semibold mb-5">{text}</p>
+            <Dialog.Title className="flex items-center justify-between mb-10">
+              <p className="text-xl font-semibold">{text}</p>
+              <Dialog.Close>
+                <IoClose size={28} />
+              </Dialog.Close>
             </Dialog.Title>
 
             <div className="w-full flex justify-end items-center gap-4">
@@ -24,7 +28,7 @@ const CheckAgreementModal = ({ children, text, btnText, func }) => {
               </button>
               <Dialog.Close>
                 <div className="button bg-custom-blue hover:bg-custom-blue-light text-white">
-                  Cancel
+                  Anuluj
                 </div>
               </Dialog.Close>
             </div>

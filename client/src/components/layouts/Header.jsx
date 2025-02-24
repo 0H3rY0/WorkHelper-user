@@ -4,6 +4,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useNavbarStore } from "../../store/useNavbarStore";
 import { useAuthStore } from "../../store/useAuthStore";
 
+import CheckAgreementModal from "../modals/CheckAgreementModal";
+
 const Header = () => {
   const { changeNavbarState } = useNavbarStore();
   const { logout } = useAuthStore();
@@ -23,12 +25,15 @@ const Header = () => {
           <p className="cursor-pointer hover:text-slate-400 flex items-center gap-1">
             User <FaRegUser size={20} />
           </p>
-          <p
-            className="cursor-pointer hover:text-slate-400 flex items-center gap-1"
-            onClick={logout}
+          <CheckAgreementModal
+            func={logout}
+            text={"Czy na pewno chcesz się wylogować ?"}
+            btnText={"Wyloguj"}
           >
-            Logout <CgLogIn size={26} />
-          </p>
+            <p className="cursor-pointer hover:text-slate-400 flex items-center gap-1">
+              Wyloguj <CgLogIn size={26} />
+            </p>
+          </CheckAgreementModal>
         </div>
       </div>
     </div>
