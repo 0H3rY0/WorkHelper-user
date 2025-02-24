@@ -4,7 +4,11 @@ import { usePermission } from "../store/usePermission";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const SendMessage = ({ ticketId }) => {
+const SendMessage = ({
+  ticketId,
+  setIsMessageSend,
+  setIsSendMessageFormOpen,
+}) => {
   const { permission } = usePermission();
   const initialMessageState = {
     id_ticket: Number(ticketId),
@@ -40,6 +44,8 @@ const SendMessage = ({ ticketId }) => {
       );
       setMessageState(initialMessageState);
       toast.success("Wiadomość poprawnie wysłana!");
+      setIsMessageSend((prev) => !prev);
+      setIsSendMessageFormOpen(false);
       console.log(response);
     } catch (error) {
       console.log("error during sending message: ", error);

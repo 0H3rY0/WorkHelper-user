@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Message from "./ui/Message";
 
-const MessageList = ({ ticketId }) => {
+const MessageList = ({ ticketId, isMessageSend }) => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [messages, setMessages] = useState([]);
 
@@ -22,7 +22,7 @@ const MessageList = ({ ticketId }) => {
     };
 
     getAllMessagesByTicketId();
-  }, []);
+  }, [isMessageSend]);
 
   return (
     <ul className="w-full flex flex-col gap-3 items-start">

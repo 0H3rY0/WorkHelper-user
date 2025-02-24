@@ -9,6 +9,7 @@ const SingleRaportPage = () => {
   const { ticketId } = useParams();
 
   const [isSendMessageFormOpen, setIsSendMessageFormOpen] = useState(false);
+  const [isMessageSend, setIsMessageSend] = useState(false);
 
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
@@ -24,8 +25,14 @@ const SingleRaportPage = () => {
           />
         </div>
       </div>
-      {isSendMessageFormOpen && <SendMessage ticketId={ticketId} />}
-      <MessageList ticketId={ticketId} />
+      {isSendMessageFormOpen && (
+        <SendMessage
+          ticketId={ticketId}
+          setIsMessageSend={setIsMessageSend}
+          setIsSendMessageFormOpen={setIsSendMessageFormOpen}
+        />
+      )}
+      <MessageList ticketId={ticketId} isMessageSend={isMessageSend} />
     </div>
   );
 };
