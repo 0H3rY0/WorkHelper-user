@@ -1,0 +1,75 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { usePermission } from "../store/usePermission";
+import Ticket from "./ui/Ticket";
+
+const RaportsList = () => {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+  const { permission } = usePermission();
+  const [tickets, setTickets] = useState([]);
+  const [tableName, setTableName] = useState(null);
+  const [clientId, setClientId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (permission && permission.clientId) {
+      setClientId(permission.clientId);
+    }
+  }, [permission]);
+
+  useEffect(() => {
+    const getTickets = async () => {
+      if (!clientId) return;
+      setLoading(true);
+      setError(null);
+
+      try {
+        const response = await axios.get(
+          `${BACKEND_URL}/api/raport/ticket/all/${clientId}`
+        );
+        setTickets(response.data.tickets);
+        setTableName(response.data.tableName);
+      } catch (err) {
+        setError("Błąd podczas ładowania zgłoszeń");
+        console.log("Error fetching tickets:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getTickets();
+  }, [clientId]);
+
+  return (
+    <div className="w-full flex flex-col gap-5">
+      {loading && <p>Ładowanie zgłoszeń...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+
+      {!loading && !error && tickets.length === 0 && (
+        <p>Brak zgłoszeń do wyświetlenia.</p>
+      )}
+
+      <ul className="w-full flex flex-col gap-5">
+        <li
+          key={0}
+          className="w-full text-custom-gray px-5 py-1 grid grid-cols-8 gap-5 text-xl font-bold text-center rounded-sm"
+        >
+          <h2 className="col-span-2 text-start">Tytuł</h2>
+          <p className="col-span-2 text-start">Numer zgłoszenia</p>
+          <p className="text-center">Status</p>
+          <p className="text-center">Priorytet</p>
+          <p className="text-end">Data</p>
+          <p className="text-end">Godzina</p>
+        </li>
+
+        {tickets.map((item) => (
+          <Ticket key={item.id} item={item} tableName={tableName} />
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default RaportsList;
