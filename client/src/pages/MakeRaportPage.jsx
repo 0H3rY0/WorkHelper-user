@@ -9,16 +9,22 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import { FaRegCalendarCheck } from "react-icons/fa";
 
+import PermissionDenied from "../components/ui/PermissionDenied";
+
 const MakeRaportPage = () => {
   const initialRaportState = initialRaportStates.raport;
   const { permission } = usePermission();
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+  const [tablePerrmision, setTablePerrmision] = useState(false);
 
   const navigate = useNavigate();
 
   const [raport, setRaport] = useState(initialRaportState);
 
   useEffect(() => {
+    setTablePerrmision(permission.zglaszac);
+
     setRaport((prev) => ({
       ...prev,
       id_klienta: permission.clientId,
@@ -48,6 +54,10 @@ const MakeRaportPage = () => {
       console.log("error during add raport: ", error);
     }
   };
+
+  if (!tablePerrmision) {
+    return <PermissionDenied />;
+  }
 
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
