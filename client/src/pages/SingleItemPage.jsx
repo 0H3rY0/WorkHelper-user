@@ -5,6 +5,7 @@ import ItemDetails from "../components/ItemDetails";
 import { getFieldConfig } from "../utils/fieldConfig";
 import { useEffect, useState } from "react";
 import { usePermission } from "../store/usePermission";
+import PermissionDenied from "../components/ui/PermissionDenied";
 
 const SingleItemPage = () => {
   const { tableName, id } = useParams();
@@ -18,7 +19,7 @@ const SingleItemPage = () => {
   }, [permission, tableName]);
 
   if (!tablePerrmision.edytowanie) {
-    return <p>Brak dostepu do tej strony</p>;
+    return <PermissionDenied />;
   }
 
   return (

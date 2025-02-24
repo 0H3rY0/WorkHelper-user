@@ -7,11 +7,14 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { usePermission } from "../store/usePermission";
 import { getItemAddFields } from "../utils/addFieldConfig";
 import { initialDeviceStates } from "../utils/initialStates";
+import PermissionDenied from "../components/ui/PermissionDenied";
 
 const AddLaptopPage = () => {
   const { tableName } = useParams();
   const { permission } = usePermission();
   const navigate = useNavigate();
+
+  const [tablePerrmision, setTablePerrmision] = useState({});
 
   const itemFields = getItemAddFields(tableName);
   const initialState = initialDeviceStates[tableName] || {};
@@ -20,7 +23,7 @@ const AddLaptopPage = () => {
   const [objectId, setObjectId] = useState(null);
 
   useEffect(() => {
-    console.log(permission);
+    setTablePerrmision(permission[tableName]);
     if (permission.objectId) {
       setObjectId(permission.objectId);
     }
@@ -40,6 +43,10 @@ const AddLaptopPage = () => {
         </h2>
       </div>
     );
+  }
+
+  if (!tablePerrmision.dodawanie) {
+    return <PermissionDenied />;
   }
 
   return (

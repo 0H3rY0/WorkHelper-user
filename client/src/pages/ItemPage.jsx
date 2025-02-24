@@ -10,6 +10,7 @@ import { ColumnsProvider } from "../context/ColumnsContext";
 import { Link, useParams } from "react-router";
 import { MdAddToPhotos } from "react-icons/md";
 import { usePermission } from "../store/usePermission";
+import PermissionDenied from "../components/ui/PermissionDenied";
 
 const AlarmPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -79,7 +80,7 @@ const AlarmPage = () => {
   };
 
   if (!tablePerrmision.wyswietlanie) {
-    return <p>Brak dostepu do tej strony</p>;
+    return <PermissionDenied />;
   }
 
   return (
