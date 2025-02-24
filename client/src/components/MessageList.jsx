@@ -13,7 +13,9 @@ const MessageList = ({ ticketId }) => {
           `${BACKEND_URL}/api/raport/all-message/ticket/${ticketId}`
         );
         console.log(response);
-        setMessages(response.data.messages);
+        const reverseMessages = response.data.messages.slice().reverse();
+
+        setMessages(reverseMessages);
       } catch (error) {
         console.log(error);
       }
