@@ -24,7 +24,7 @@ const CheckAgreementModal = ({ children, text, btnText, func }) => {
               </button>
               <Dialog.Close>
                 <div className="button bg-custom-blue hover:bg-custom-blue-light text-white">
-                  Cancel
+                  Anuluj
                 </div>
               </Dialog.Close>
             </div>
