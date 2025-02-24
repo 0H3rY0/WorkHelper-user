@@ -24,7 +24,7 @@ const SingleRaportPage = () => {
           />
         </div>
       </div>
-      {isSendMessageFormOpen && <SendMessage />}
+      {isSendMessageFormOpen && <SendMessage ticketId={ticketId} />}
       <MessageList ticketId={ticketId} />
     </div>
   );
