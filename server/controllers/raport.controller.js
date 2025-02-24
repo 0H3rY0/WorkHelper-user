@@ -105,8 +105,46 @@ const getAllMessageByTicketId = (req, res) => {
   });
 };
 
+const sendMessage = (req, res) => {
+  const { id_ticket, id_klienta, tresc, data, godzina } = req.body;
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+  // const date = today.toISOString().split("T")[0]; // YYYY-MM-DD
+  // const time = today.toTimeString().split(" ")[0]; // HH:MM:SS
+
+  const tableName = `message${month}${year}`;
+
+  const sql = `
+    INSERT INTO ?? (id_ticket, id_klienta, data, godzina, tresc)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(
+    sql,
+    [tableName, id_ticket, id_klienta, data, godzina, tresc],
+    (err, result) => {
+      if (err) {
+        console.log("Error in sendMessage:", err);
+        return res
+          .status(500)
+          .json({ success: false, message: `DB error: ${err}` });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Message sent successfully!",
+        messageId: result.insertId,
+        tableName: tableName,
+      });
+    }
+  );
+};
+
 module.exports = {
   addRaport,
   getAllTicketsByClientId,
   getAllMessageByTicketId,
+  sendMessage,
 };
