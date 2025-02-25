@@ -27,25 +27,19 @@ const ChangePasswordModal = ({ children }) => {
       return;
     }
 
-    const sendPasswordData = {
-      currentPassword: password.currentPassword,
-      newPassword: password.newPassword,
-      id: user.id,
-    };
-
     try {
-      await axios.post(
-        `${BACKEND_URL}/api/uzytkownicy/change-password`,
-        sendPasswordData
-      );
+      await axios.post(`${BACKEND_URL}/api/uzytkownicy/change-password`, {
+        currentPassword: password.currentPassword,
+        newPassword: password.newPassword,
+        id: user.id,
+      });
 
       toast.success("Hasło zostało zmienione!");
       setPassword(initialPasswordState);
       setError(null);
-      setIsOpen(false); // Teraz modal się zamyka po poprawnej zmianie hasła
+      setIsOpen(false); // Teraz modal zamyka się poprawnie
     } catch (error) {
-      const newError = error?.response?.data?.message || "Błąd serwera!";
-      setError(newError);
+      setError(error?.response?.data?.message || "Błąd serwera!");
     }
   };
 
@@ -53,35 +47,37 @@ const ChangePasswordModal = ({ children }) => {
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center">
-          <Dialog.Content className="bg-custom-gray p-8 rounded-xl shadow-2xl w-full max-w-md">
-            <Dialog.Title className="flex items-center justify-between text-white text-xl font-semibold">
-              Zmień hasło
-              <Dialog.Close className="text-white hover:text-red-500 transition">
+        <Dialog.Overlay className="modal-overlay">
+          <Dialog.Content className="modal-content">
+            {/* === Nagłówek === */}
+            <div className="modal-header">
+              <p>Zmień hasło</p>
+              <Dialog.Close className="modal-close">
                 <IoClose size={28} />
               </Dialog.Close>
-            </Dialog.Title>
+            </div>
 
+            {/* === Inputy === */}
             <div className="mt-6 space-y-4">
               <input
                 name="currentPassword"
                 type="password"
                 placeholder="Obecne hasło"
-                className="w-full p-3 rounded-lg bg-dark-gray text-white outline-none border-2 border-transparent focus:border-custom-orange transition"
+                className="modal-input"
                 onChange={InputChange}
               />
               <input
                 name="newPassword"
                 type="password"
                 placeholder="Nowe hasło"
-                className="w-full p-3 rounded-lg bg-dark-gray text-white outline-none border-2 border-transparent focus:border-custom-orange transition"
+                className="modal-input"
                 onChange={InputChange}
               />
               <input
                 name="repeatedNewPassword"
                 type="password"
                 placeholder="Powtórz nowe hasło"
-                className="w-full p-3 rounded-lg bg-dark-gray text-white outline-none border-2 border-transparent focus:border-custom-orange transition"
+                className="modal-input"
                 onChange={InputChange}
               />
             </div>
@@ -92,14 +88,15 @@ const ChangePasswordModal = ({ children }) => {
               </p>
             )}
 
-            <div className="flex justify-end gap-3 mt-6">
+            {/* === Przycisk "Anuluj" i "Zmień" === */}
+            <div className="modal-actions">
               <Dialog.Close asChild>
-                <button className="bg-custom-blue hover:bg-custom-blue-light text-white px-4 py-2 rounded-lg transition">
+                <button className="button bg-custom-blue hover:bg-custom-blue-light">
                   Anuluj
                 </button>
               </Dialog.Close>
               <button
-                className="bg-gradient-to-r from-custom-orange to-custom-red text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
+                className="button bg-custom-orange"
                 onClick={handleChangePassword}
               >
                 Zmień
