@@ -19,12 +19,10 @@ const Ticket = ({ item, tableName }) => {
       <p className="text-center text-sm md:text-base">{item.status}</p>
       <p className="text-center text-sm md:text-base">{item.priorytet}</p>
 
-      {/* Data i godzina razem na mniejszych ekranach */}
       <p className="text-end text-sm md:hidden whitespace-nowrap">
         {formatDate(item.data)}, {item.godzina}
       </p>
 
-      {/* Osobno na większych ekranach */}
       <p className="hidden md:block text-end">{formatDate(item.data)}</p>
       <p className="hidden md:block text-end">{item.godzina}</p>
     </li>

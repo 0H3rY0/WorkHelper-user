@@ -54,7 +54,6 @@ const RaportsList = () => {
       )}
 
       <ul className="w-full flex flex-col gap-3">
-        {/* Nagłówek - zawsze widoczny */}
         <li
           key={0}
           className="w-full text-custom-gray px-3 md:px-5 py-2 
@@ -65,14 +64,11 @@ const RaportsList = () => {
           <p className="col-span-2 text-start truncate">Numer zgłoszenia</p>
           <p className="text-center">Status</p>
           <p className="text-center">Priorytet</p>
-          {/* Data i godzina razem na małych ekranach */}
           <p className="text-end md:hidden whitespace-nowrap">Data i godz.</p>
-          {/* Osobno na większych ekranach */}
           <p className="hidden md:block text-end whitespace-nowrap">Data</p>
           <p className="hidden md:block text-end whitespace-nowrap">Godzina</p>
         </li>
 
-        {/* Renderowanie zgłoszeń */}
         {tickets.map((item) => (
           <Ticket key={item.id} item={item} tableName={tableName} />
         ))}
