@@ -20,7 +20,7 @@ export const fieldConfigs = {
   ],
 
   laptopy: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Nr Seryjny", type: "text", name: "nr_seryjny", checked: true },
     { label: "Model", type: "text", name: "model", checked: true },
     { label: "Podział Uprawnień", type: "checkbox", name: "podzial_uprawnien" },
@@ -50,8 +50,8 @@ export const fieldConfigs = {
     { label: "ID Programu", type: "text", name: "id_programu" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   pc: [

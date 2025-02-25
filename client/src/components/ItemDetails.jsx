@@ -52,38 +52,43 @@ const ItemDetails = ({ tableName, itemId, fieldConfig }) => {
               readOnly={editMode !== field.name}
               onChange={handleChangeItemState}
             />
-            <div
-              data-name={field.name}
-              className="underline cursor-pointer flex gap-5 underline-offset-4"
-              onClick={handleCheckItemState}
-            >
-              {editMode === field.name ? (
-                <>
-                  <CheckAgreementModal
-                    text={`Czy na pewno edytować ${field.label}?`}
-                    func={handleEditField}
-                    btnText={"Edit"}
-                  >
-                    <p className="hover:scale-125 scale-transition hover:text-custom-blue underline-offset-4">
-                      Save
+
+            {field.edit === false ? (
+              <p className="text-end text-nowrap">Nie można edytować</p>
+            ) : (
+              <div
+                data-name={field.name}
+                className="underline cursor-pointer flex gap-5 underline-offset-4"
+                onClick={handleCheckItemState}
+              >
+                {editMode === field.name ? (
+                  <>
+                    <CheckAgreementModal
+                      text={`Czy na pewno edytować ${field.label}?`}
+                      func={handleEditField}
+                      btnText={"Edit"}
+                    >
+                      <p className="hover:scale-125 scale-transition hover:text-custom-blue underline-offset-4">
+                        Save
+                      </p>
+                    </CheckAgreementModal>
+                    <p
+                      className="hover:scale-125 scale-transition hover:text-custom-blue underline-offset-4"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditMode(null);
+                      }}
+                    >
+                      Cancel
                     </p>
-                  </CheckAgreementModal>
-                  <p
-                    className="hover:scale-125 scale-transition hover:text-custom-blue underline-offset-4"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setEditMode(null);
-                    }}
-                  >
-                    Cancel
+                  </>
+                ) : (
+                  <p className="hover:scale-125 scale-transition hover:text-custom-blue underline-offset-4">
+                    Edit
                   </p>
-                </>
-              ) : (
-                <p className="hover:scale-125 scale-transition hover:text-custom-blue underline-offset-4">
-                  Edit
-                </p>
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
         </li>
       ))}
