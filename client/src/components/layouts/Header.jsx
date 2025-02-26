@@ -5,6 +5,7 @@ import { useNavbarStore } from "../../store/useNavbarStore";
 import { useAuthStore } from "../../store/useAuthStore";
 
 import CheckAgreementModal from "../modals/CheckAgreementModal";
+import ChangePasswordModal from "../modals/ChangePasswordModal";
 
 const Header = () => {
   const { changeNavbarState } = useNavbarStore();
@@ -22,9 +23,12 @@ const Header = () => {
         </div>
 
         <div className="flex justify-center items-center gap-8 text-lg">
-          <p className="cursor-pointer hover:text-slate-400 flex items-center gap-1">
-            User <FaRegUser size={20} />
-          </p>
+          <ChangePasswordModal>
+            <p className="cursor-pointer hover:text-slate-400 flex items-center gap-1">
+              User <FaRegUser size={20} />
+            </p>
+          </ChangePasswordModal>
+
           <CheckAgreementModal
             func={logout}
             text={"Czy na pewno chcesz się wylogować ?"}

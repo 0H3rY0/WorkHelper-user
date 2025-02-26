@@ -48,20 +48,25 @@ const RaportsList = () => {
       {error && <p className="text-red-500">{error}</p>}
 
       {!loading && !error && tickets.length === 0 && (
-        <p>Brak zgłoszeń do wyświetlenia.</p>
+        <p className="text-center text-gray-500">
+          Brak zgłoszeń do wyświetlenia.
+        </p>
       )}
 
-      <ul className="w-full flex flex-col gap-5">
+      <ul className="w-full flex flex-col gap-3">
         <li
           key={0}
-          className="w-full text-custom-gray px-5 py-1 grid grid-cols-8 gap-5 text-xl font-bold text-center rounded-sm"
+          className="w-full text-custom-gray px-3 md:px-5 py-2 
+          grid grid-cols-6 md:grid-cols-8 gap-2 md:gap-5 text-xs md:text-sm lg:text-base font-bold 
+          text-center rounded-sm bg-gray-200"
         >
-          <h2 className="col-span-2 text-start">Tytuł</h2>
-          <p className="col-span-2 text-start">Numer zgłoszenia</p>
+          <h2 className="col-span-2 text-start truncate">Tytuł</h2>
+          <p className="col-span-2 text-start truncate">Numer zgłoszenia</p>
           <p className="text-center">Status</p>
           <p className="text-center">Priorytet</p>
-          <p className="text-end">Data</p>
-          <p className="text-end">Godzina</p>
+          <p className="text-end md:hidden whitespace-nowrap">Data i godz.</p>
+          <p className="hidden md:block text-end whitespace-nowrap">Data</p>
+          <p className="hidden md:block text-end whitespace-nowrap">Godzina</p>
         </li>
 
         {tickets.map((item) => (

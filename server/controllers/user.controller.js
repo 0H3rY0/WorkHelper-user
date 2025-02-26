@@ -182,10 +182,62 @@ const getApproprietePerrmision = async (req, res) => {
   });
 };
 
+const changePassword = async (req, res) => {
+  const { currentPassword, newPassword, id } = req.body;
+
+  console.log(currentPassword, newPassword, id);
+
+  if (!currentPassword || !newPassword || !id) {
+    return res.status(400).json({ message: "Wszystkie pola są wymagane" });
+  }
+
+  try {
+    const sql = "SELECT haslo FROM uzytkownicy WHERE id = ?";
+    const [user] = await new Promise((resolve, reject) => {
+      db.query(sql, [id], (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+      });
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const hashedPassword = user.haslo;
+
+    const isPasswordValid = await bcrypt.compare(
+      currentPassword,
+      hashedPassword
+    );
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Invalid current password" });
+    }
+
+    const saltRounds = 10;
+    const newHashedPassword = await bcrypt.hash(newPassword, saltRounds);
+
+    const updateSql = "UPDATE uzytkownicy SET haslo = ? WHERE id = ?";
+    await new Promise((resolve, reject) => {
+      db.query(updateSql, [newHashedPassword, id], (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+      });
+    });
+
+    res.status(200).json({ message: "Password changed successfully" });
+  } catch (error) {
+    console.error("Error changing password:", error.message);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 module.exports = {
   login,
   getUser,
   getClientsByUserId,
   getAllObjectsWithGroupsByUserId,
   getApproprietePerrmision,
+  changePassword,
 };

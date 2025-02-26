@@ -31,18 +31,27 @@ const ObjectsPage = () => {
 
   return (
     <ObjectsTemplate>
-      <ul className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1  p-16 items-start gap-10">
+      <ul className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 content-start  md:p-16 p-4 md:gap-10 gap-4">
         {user.userData?.map((item, index) => (
           <li
-            className="bg-custom-blue-light shadow-xl text-white p-6 hover:scale-115 scale-transition cursor-pointer"
+            className="bg-custom-blue-light shadow-lg text-white p-6 rounded-sm 
+  hover:scale-105 transition-transform cursor-pointer flex flex-col gap-3"
             key={index}
             onClick={() =>
               handleSelectObject(item.grupa_id, item.obiekt_id, item.klient_id)
             }
           >
-            <h2 className="mb-5">Nazwa: {item.obiekt_nazwa || "Brak nazwy"}</h2>
-            <p>Stanowisko: {item.stanowisko}</p>
-            <p>Telefon: {item.telefon || "brak podanego"}</p>
+            <h2 className="text-xl font-bold border-b border-white pb-2">
+              {item.obiekt_nazwa || "Brak nazwy"}
+            </h2>
+            <p className="text-lg">
+              <span className="font-semibold">Stanowisko:</span>{" "}
+              {item.stanowisko}
+            </p>
+            <p className="text-lg">
+              <span className="font-semibold">Telefon:</span>{" "}
+              {item.telefon || "Brak podanego"}
+            </p>
           </li>
         ))}
       </ul>

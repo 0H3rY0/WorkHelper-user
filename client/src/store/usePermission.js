@@ -5,6 +5,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const usePermission = create((set) => ({
   permission: {
+    zglaszac: false,
     laptopy: { wyswietlanie: false, dodawanie: false, edytowanie: false },
     pc: { wyswietlanie: false, dodawanie: false, edytowanie: false },
     kamery: { wyswietlanie: false, dodawanie: false, edytowanie: false },
@@ -50,6 +51,7 @@ export const usePermission = create((set) => ({
         return acc;
       }, {});
 
+      parsedPermissions.zglaszac = !!data.zglaszac;
       parsedPermissions.objectId = objectId;
       parsedPermissions.clientId = clientId;
 

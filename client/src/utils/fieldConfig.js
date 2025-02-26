@@ -20,7 +20,7 @@ export const fieldConfigs = {
   ],
 
   laptopy: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Nr Seryjny", type: "text", name: "nr_seryjny", checked: true },
     { label: "Model", type: "text", name: "model", checked: true },
     { label: "Podział Uprawnień", type: "checkbox", name: "podzial_uprawnien" },
@@ -50,12 +50,12 @@ export const fieldConfigs = {
     { label: "ID Programu", type: "text", name: "id_programu" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   pc: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Numer Seryjny", type: "text", name: "nr_seryjny", checked: true },
     { label: "Podział Uprawnień", type: "checkbox", name: "podzial_uprawnien" },
     {
@@ -90,12 +90,12 @@ export const fieldConfigs = {
     { label: "ID Programu", type: "number", name: "id_programu" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   kamery: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Numer Seryjny", type: "text", name: "nr_seryjny", checked: true },
     { label: "Adres MAC", type: "text", name: "mac", checked: true },
     { label: "Model", type: "text", name: "model", checked: true },
@@ -105,12 +105,12 @@ export const fieldConfigs = {
     { label: "IP Wewnętrzne", type: "text", name: "ipWewnetrzne" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   alarmy: [
-    { label: "ID", type: "number", name: "id", checked: true },
+    { label: "ID", type: "number", name: "id", checked: true, edit: false },
     { label: "Model", type: "text", name: "model", checked: true },
     {
       label: "Ilość Czujek",
@@ -138,12 +138,12 @@ export const fieldConfigs = {
     },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    // { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   anteny: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Czasza", type: "checkbox", name: "czasza", checked: true },
     {
       label: "Antena DVB-T",
@@ -166,12 +166,12 @@ export const fieldConfigs = {
     },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   oprogramowania: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Nazwa", type: "text", name: "nazwa", checked: true },
     { label: "Opis", type: "text", name: "opis" },
     { label: "Klucz", type: "text", name: "klucz" },
@@ -186,12 +186,12 @@ export const fieldConfigs = {
     { label: "Data Ważności", type: "date", name: "data_waznosci" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   routers: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Numer Seryjny", type: "text", name: "nr_seryjny", checked: true },
     { label: "Model", type: "text", name: "model" },
     { label: "MAC WAN", type: "text", name: "macWAN" },
@@ -209,12 +209,12 @@ export const fieldConfigs = {
     { label: "VPN Zarządzanie", type: "checkbox", name: "VPNzazadzanie" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   nvr: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Numer Seryjny", type: "text", name: "nr_seryjny", checked: true },
     { label: "Model", type: "text", name: "model" },
     { label: "MAC", type: "text", name: "mac" },
@@ -235,19 +235,19 @@ export const fieldConfigs = {
     { label: "P2P", type: "checkbox", name: "p2p" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   pozostale: [
-    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id", type: "number", name: "id", checked: true, edit: false },
     { label: "Nazwa", type: "text", name: "nazwa", checked: true },
     { label: "Opis", type: "text", name: "opis" },
     { label: "Zasada Działania", type: "text", name: "zasadaDzialania" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "dataOD" },
-    { label: "Data DO", type: "date", name: "dataDO" },
+    { label: "Data OD", type: "date", name: "dataOD", edit: false },
+    { label: "Data DO", type: "date", name: "dataDO", edit: false },
   ],
 
   uzytkownicy: [
