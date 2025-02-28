@@ -7,7 +7,8 @@ const userRoutes = require("./routes/user.route");
 const itemRoutes = require("./routes/item.route");
 const raportRoutes = require("./routes/raport.route");
 
-app.use(cors());
+const cors = require("cors");
+app.use(cors({ origin: "https://workhelper-front.onrender.com" }));
 app.use(express.json());
 
 app.use("/api/uzytkownicy", userRoutes);
