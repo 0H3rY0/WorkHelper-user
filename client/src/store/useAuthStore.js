@@ -1,4 +1,4 @@
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { create } from "zustand";
 import { useUserStore } from "./useUserStore";
 // import { useNavigate } from "react-router";
