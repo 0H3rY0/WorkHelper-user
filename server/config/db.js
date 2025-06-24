@@ -16,7 +16,7 @@ db.getConnection((err, connection) => {
     console.error("❌ Error with connect db", err.message);
     return;
   }
-  console.log("✅ successfuly connect tdb");
+  console.log("✅ successfuly connect db");
   connection.release();
 });
 
