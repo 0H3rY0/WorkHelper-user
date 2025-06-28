@@ -97,11 +97,11 @@ const editItem = async (req, res) => {
   const { id, ...fields } = req.body;
 
   if (!id) {
-    return res.status(400).json({ message: "Brak ID obiektu do aktualizacji" });
+    return res.status(400).json({ message: "ID not found" });
   }
 
   if (Object.keys(fields).length === 0) {
-    return res.status(400).json({ message: "Brak danych do aktualizacji" });
+    return res.status(400).json({ message: "No data available" });
   }
 
   try {
@@ -118,13 +118,13 @@ const editItem = async (req, res) => {
       }
 
       res.status(200).json({
-        message: "Obiekt zaktualizowany pomyślnie",
+        message: "Correct update",
         affectedRows: result.affectedRows,
       });
     });
   } catch (error) {
-    console.error("Błąd podczas aktualizacji obiektu:", error);
-    res.status(500).json({ message: "Błąd serwera" });
+    console.error("Update object:", error);
+    res.status(500).json({ message: "server error" });
   }
 };
 
@@ -157,7 +157,7 @@ const getAllItems = (req, res) => {
 
   const allowedTables = ["klienci", "uzytkownicy", "grupy", "obiekty"];
   if (!allowedTables.includes(tableName)) {
-    return res.status(400).json({ error: "Nieprawidłowa tabela" });
+    return res.status(400).json({ error: "Incorrect table" });
   }
 
   const sql = `SELECT * FROM ??`;

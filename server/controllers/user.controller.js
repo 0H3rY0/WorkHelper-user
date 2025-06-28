@@ -51,8 +51,6 @@ const login = async (req, res) => {
 const getUser = async (req, res) => {
   const { id } = req.params;
 
-  console.log("moje id to: ", id);
-
   const sql = "SELECT id, imie, nazwisko, email FROM uzytkownicy WHERE id = ?";
 
   db.query(sql, [id], (err, result) => {
@@ -79,8 +77,6 @@ const getUser = async (req, res) => {
 
 const getClientsByUserId = async (req, res) => {
   const { id } = req.params;
-
-  console.log("moje id to:", id);
 
   const sql = `
     SELECT klienci.id, klienci.id_user, klienci.id_grupy, klienci.id_obiektu, klienci.stanowisko 
@@ -113,8 +109,6 @@ const getClientsByUserId = async (req, res) => {
 
 const getAllObjectsWithGroupsByUserId = async (req, res) => {
   const { id } = req.params;
-
-  console.log("to jest id: ", id);
 
   const sql = `
  SELECT 
@@ -155,8 +149,6 @@ WHERE k.id_user = ?;
 
 const getApproprietePerrmision = async (req, res) => {
   const { id } = req.params;
-
-  console.log("to jest id: ", id);
 
   const sql = `SELECT * FROM grupy WHERE id = ?`;
 
