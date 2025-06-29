@@ -8,7 +8,6 @@ const CheckAgreementModal = ({ children, text, btnText, func }) => {
       <Dialog.Portal>
         <Dialog.Overlay className="modal-overlay">
           <Dialog.Content className="modal-content">
-            {/* === Nagłówek === */}
             <div className="modal-header">
               <p>{text}</p>
               <Dialog.Close className="modal-close">
@@ -16,7 +15,6 @@ const CheckAgreementModal = ({ children, text, btnText, func }) => {
               </Dialog.Close>
             </div>
 
-            {/* === Przyciski akcji === */}
             <div className="modal-actions">
               <Dialog.Close asChild>
                 <button className="button bg-custom-blue hover:bg-custom-blue-light">

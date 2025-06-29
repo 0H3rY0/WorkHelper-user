@@ -37,7 +37,7 @@ const ChangePasswordModal = ({ children }) => {
       toast.success("Hasło zostało zmienione!");
       setPassword(initialPasswordState);
       setError(null);
-      setIsOpen(false); // Teraz modal zamyka się poprawnie
+      setIsOpen(false);
     } catch (error) {
       setError(error?.response?.data?.message || "Błąd serwera!");
     }
@@ -49,7 +49,6 @@ const ChangePasswordModal = ({ children }) => {
       <Dialog.Portal>
         <Dialog.Overlay className="modal-overlay">
           <Dialog.Content className="modal-content">
-            {/* === Nagłówek === */}
             <div className="modal-header">
               <p>Zmień hasło</p>
               <Dialog.Close className="modal-close">
@@ -57,7 +56,6 @@ const ChangePasswordModal = ({ children }) => {
               </Dialog.Close>
             </div>
 
-            {/* === Inputy === */}
             <div className="mt-6 space-y-4">
               <input
                 name="currentPassword"
@@ -88,7 +86,6 @@ const ChangePasswordModal = ({ children }) => {
               </p>
             )}
 
-            {/* === Przycisk "Anuluj" i "Zmień" === */}
             <div className="modal-actions">
               <Dialog.Close asChild>
                 <button className="button bg-custom-blue hover:bg-custom-blue-light">

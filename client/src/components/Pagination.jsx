@@ -7,7 +7,6 @@ const Pagination = ({
   renderPageNumbers,
 }) => {
   return (
-    // totalPages > 1 && (
     <div className="w-full flex justify-center items-center bg-dark-gray p-2 min-h-12">
       {currentPage > 1 && (
         <button
@@ -28,7 +27,6 @@ const Pagination = ({
       )}
     </div>
   );
-  // );
 };
 
 export default Pagination;
