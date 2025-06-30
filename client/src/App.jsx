@@ -17,9 +17,7 @@ function App() {
   return (
     <>
       <ToastContainer />
-      {/* <BrowserRouter> */}
       {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
-      {/* </BrowserRouter> */}
     </>
   );
 }

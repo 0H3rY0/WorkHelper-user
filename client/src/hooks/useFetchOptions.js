@@ -25,7 +25,7 @@ const useFetchOptions = (fields) => {
 
         setOptions(newOptions);
       } catch (error) {
-        console.error("Błąd pobierania danych:", error);
+        console.error("Error during downloading data:", error);
       }
     };
 

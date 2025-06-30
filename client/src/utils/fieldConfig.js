@@ -1,4 +1,3 @@
-// Konfiguracja pól dla różnych typów tabel
 export const fieldConfigs = {
   obiekty: [
     { label: "Id", type: "number", name: "id", checked: true },

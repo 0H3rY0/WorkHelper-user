@@ -1,4 +1,3 @@
-// SelectedObjectTemplate.jsx
 import { Routes, Route } from "react-router-dom";
 import Navbar from "../components/layouts/Navbar";
 import MainTemplate from "./MainTemplate";

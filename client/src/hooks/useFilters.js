@@ -39,7 +39,7 @@ const useFilters = (get_url, tableName) => {
       setIsSearching(false);
       setCurrentPage(1);
     } catch (error) {
-      console.error("Błąd podczas pobierania danych:", error);
+      console.error("Error during downloading data:", error);
     }
   };
 

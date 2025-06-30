@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import { useUserStore } from "../store/useUserStore";
 import ObjectsTemplate from "../templates/ObjectsTemplate";
 import { useNavigate } from "react-router";

@@ -53,7 +53,7 @@ body {
   box-shadow: 0 0 5px rgba(75, 158, 175, 0.5);
 }
 
-/* style do tabeli */
+/* table styling */
 
 .table {
   width: 100%;
@@ -171,7 +171,7 @@ body {
 }
 
 label {
-  color: #3b4e63; /* custom-blue */
+  color: #3b4e63;
   font-size: 16px;
   font-weight: 600;
   display: block;
@@ -252,8 +252,7 @@ input[type="checkbox"]:checked::before {
 }
 
 input:focus {
-  /* border-color: #ffffff; */
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.6); /* Zmień na jaśniejszy cień */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
   transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
@@ -268,30 +267,27 @@ input::placeholder {
 }
 
 /* modal styling */
-/* === Overlay (tło modala) === */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Przyciemnione tło */
-  backdrop-filter: blur(5px); /* Subtelne rozmycie */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* === Główne okno modala === */
 .modal-content {
   width: 100%;
-  max-width: 32rem; /* max-w-md */
-  background-color: #575757; /* custom-gray */
+  max-width: 32rem;
+  background-color: #575757;
   color: white;
   padding: 2rem;
-  border-radius: 10px; /* rounded-lg */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* shadow-xl */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
-/* === Nagłówek modala (tytuł + przycisk zamykania) === */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -301,17 +297,17 @@ input::placeholder {
   color: white;
 }
 
-/* === Przycisk zamykania === */
 .modal-close {
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .modal-close:hover {
-  color: #e76f51; /* custom-red */
+  color: #e76f51;
 }
 
-/* === Inputy w modalu === */
+/* inputs in modal  */
+
 .modal-input {
   width: 100%;
   padding: 0.75rem;

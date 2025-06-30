@@ -6,7 +6,6 @@ const useAddDeviceForm = (initialState, endpoint, objectId) => {
   const [formState, setFormState] = useState(initialState);
   const [error, setError] = useState(null);
 
-  // Jeśli objectId jest wymagane, sprawdź czy jest dostępne przed wysyłaniem formularza
   if (!objectId) {
     return {
       formState,

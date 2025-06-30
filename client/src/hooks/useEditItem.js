@@ -15,7 +15,7 @@ const useEditItem = (tableName, id, itemData) => {
       setEditMode(null);
       toast.success("Edycja zakończona sukcesem!");
     } catch (err) {
-      console.error("Błąd edycji:", err);
+      console.error("Edit error:", err);
     }
   };
 
