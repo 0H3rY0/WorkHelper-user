@@ -312,7 +312,7 @@ input::placeholder {
   width: 100%;
   padding: 0.75rem;
   border-radius: 6px;
-  background-color: #2d2d2d; /* dark-gray */
+  background-color: #2d2d2d;
   color: white;
   border: 2px solid transparent;
   outline: none;
@@ -320,10 +320,9 @@ input::placeholder {
 }
 
 .modal-input:focus {
-  border-color: #f4a261; /* custom-orange */
+  border-color: #f4a261;
 }
 
-/* === Kontener na przyciski === */
 .modal-actions {
   display: flex;
   justify-content: flex-end;
